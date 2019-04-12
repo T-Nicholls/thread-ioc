@@ -22,12 +22,12 @@ class thread_test(object):
 
 # Create PVs.
 pvs1 = ['PV-{0}-PC-01'.format(i + 1) for i in range(4000)]
-pvs1 = ['PV-{0}-PC-02'.format(i + 1) for i in range(4000)]
+pvs2 = ['PV-{0}-PC-02'.format(i + 1) for i in range(4000)]
 
 # Create 4000 aIn and 4000 aOut records without background thread running.
 print("Without thread:")
 start = time.time()
-svr = server.ATIPServer(pvs)
+svr = server.ATIPServer(pvs1)
 print('    Total time: {0}'.format(time.time() - start))
 
 # Start background thread
@@ -36,7 +36,7 @@ th = thread_test()
 # Create 4000 aIn and 4000 aOut records with background thread running.
 print("With thread:")
 start = time.time()
-svr = server.ATIPServer(pvs)
+svr = server.ATIPServer(pvs2)
 print('    Total time: {0}'.format(time.time() - start))
 
 # Start the IOC.
